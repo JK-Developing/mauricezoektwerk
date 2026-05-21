@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MauriceZoektWerk.nl | Vind een baan voor Maurice</title>
+    <meta
+      name="description"
+      content="MauriceZoektWerk.nl helpt Maurice, een sociaal en communicatief sterke professional, snel passende vacatures te vinden."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://mauricezoektwerk.nl/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content="mauricezoektwerk.nl" />
+    <meta property="og:title" content="MauriceZoektWerk.nl | Vind een baan voor Maurice" />
+    <meta
+      property="og:description"
+      content="Ontdek snel vacatures voor Maurice via betrouwbare platforms, met focus op sociale en communicatieve functies."
+    />
+    <meta property="og:url" content="https://mauricezoektwerk.nl/" />
+    <meta property="og:image" content="https://mauricezoektwerk.nl/og-image.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MauriceZoektWerk.nl | Vind een baan voor Maurice" />
+    <meta
+      name="twitter:description"
+      content="Een overzichtelijke vacaturezoeksite die Maurice helpt bij het vinden van een baan met veel menselijk contact."
+    />
+    <meta name="twitter:image" content="https://mauricezoektwerk.nl/og-image.jpg" />
+    <meta name="theme-color" content="#1e293b" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="hero" id="home">
+      <nav class="container nav" aria-label="Hoofdnavigatie">
+        <a href="#home" class="logo" aria-label="Ga naar homepage">mauricezoektwerk.nl</a>
+        <ul class="nav-links">
+          <li><a href="#zoeken">Zoeken</a></li>
+          <li><a href="#over">Over Maurice</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="container hero-content">
+        <p class="hero-label">Persoonlijk vacatureplatform</p>
+        <h1>Maurice is klaar voor een nieuwe stap in zijn loopbaan.</h1>
+        <p class="hero-intro">
+          Maurice is sociaal, werkt graag met mensen en voelt zich op zijn best in een functie waarin
+          samenwerken en heldere communicatie centraal staan. Deze website helpt hem snel passende
+          vacatures te vinden via meerdere betrouwbare vacatureplatformen.
+        </p>
+        <a class="btn btn-primary" href="#zoeken">Vind een baan</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="hoe-werkt-het" aria-labelledby="hoe-werkt-het-titel">
+        <div class="container">
+          <h2 id="hoe-werkt-het-titel">Hoe werkt het?</h2>
+          <div class="steps" role="list">
+            <article class="step" role="listitem">
+              <h3>1. Zoekopdracht invullen</h3>
+              <p>Typ een functie, skill of interessegebied van Maurice in de zoekbalk.</p>
+            </article>
+            <article class="step" role="listitem">
+              <h3>2. Filters kiezen</h3>
+              <p>Verfijn op locatie en soort dienstverband voor gerichtere resultaten.</p>
+            </article>
+            <article class="step" role="listitem">
+              <h3>3. Vacatures openen</h3>
+              <p>Klik op een platform en bekijk direct vacatures op de externe vacaturewebsite.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-search" id="zoeken" aria-labelledby="zoeken-titel">
+        <div class="container">
+          <h2 id="zoeken-titel">Vacature zoekfunctie</h2>
+          <form id="searchForm" class="search-form" novalidate>
+            <div class="field-group">
+              <label for="zoekterm">Zoekterm</label>
+              <input
+                id="zoekterm"
+                name="zoekterm"
+                type="text"
+                placeholder="Bijv. data-analist, projectmanager, BI developer"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="locatie">Locatie</label>
+                <select id="locatie" name="locatie">
+                  <option value="">Alle locaties</option>
+                  <option value="Amsterdam">Amsterdam</option>
+                  <option value="Rotterdam">Rotterdam</option>
+                  <option value="Utrecht">Utrecht</option>
+                  <option value="Den Haag">Den Haag</option>
+                  <option value="Eindhoven">Eindhoven</option>
+                  <option value="Hybride">Hybride</option>
+                  <option value="Remote">Remote</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="dienstverband">Dienstverband</label>
+                <select id="dienstverband" name="dienstverband">
+                  <option value="">Alle types</option>
+                  <option value="fulltime">Fulltime</option>
+                  <option value="parttime">Parttime</option>
+                  <option value="tijdelijk">Tijdelijk</option>
+                  <option value="vast">Vast</option>
+                  <option value="freelance">Freelance</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Zoek</button>
+          </form>
+
+          <div id="loadingIndicator" class="loading" aria-live="polite" hidden>
+            <span class="spinner" aria-hidden="true"></span>
+            <p>Bezig met zoeken naar vacatures...</p>
+          </div>
+
+          <div id="emptyState" class="empty-state" aria-live="polite" hidden>
+            <h3>Geen resultaten gevonden</h3>
+            <p>
+              Vul minimaal een zoekterm of filter in om vacaturelinks te genereren voor Maurice.
+            </p>
+          </div>
+
+          <section id="results" class="results" aria-live="polite" aria-labelledby="resultaten-titel">
+            <h3 id="resultaten-titel">Zoekresultaten</h3>
+            <div id="resultsGrid" class="results-grid"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" id="over" aria-labelledby="over-titel">
+        <div class="container">
+          <h2 id="over-titel">Over Maurice</h2>
+          <article class="profile-card">
+            <h3>Profiel</h3>
+            <p>
+              Maurice is een toegankelijke en positieve professional die energie krijgt van contact met
+              mensen. Hij communiceert helder, luistert actief en weet collega's en klanten op een
+              prettige manier mee te nemen. Hij zoekt een rol waarin samenwerking, klantgerichtheid en
+              goede communicatie een belangrijke plek hebben.
+            </p>
+
+            <h3>Vaardigheden</h3>
+            <ul>
+              <li>Sterke mondelinge en schriftelijke communicatie</li>
+              <li>Samenwerken met diverse teams en stakeholders</li>
+              <li>Klantgericht werken en relatiebeheer</li>
+              <li>Structuur aanbrengen en afspraken opvolgen</li>
+            </ul>
+
+            <h3>Werkervaring</h3>
+            <p>
+              Maurice heeft ruime ervaring in de detailhandel, waar hij dagelijks klanten te woord stond,
+              hun wensen vertaalde naar passende oplossingen en actief adviseerde bij keuzes. Daarnaast
+              heeft hij ervaring in rollen waarin afstemming, samenwerking en contact met interne en
+              externe partijen centraal stonden. Hij schakelt makkelijk tussen verschillende
+              gesprekspartners, bewaart overzicht en zorgt dat acties duidelijk worden opgepakt. Daarmee
+              levert hij een betrouwbare bijdrage aan teams en projecten.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-contact" id="contact" aria-labelledby="contact-titel">
+        <div class="container">
+          <h2 id="contact-titel">Contact</h2>
+          <p>
+            Ken je een passende vacature of wil je Maurice uitnodigen voor een gesprek?
+            Neem contact op via
+            <a href="mailto:maurice@example.com">maurice@example.com</a>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> mauricezoektwerk.nl</p>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
