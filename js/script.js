@@ -37,16 +37,15 @@ const jobSources = [
   },
   {
     name: "Nationale Vacaturebank",
-    base: "https://www.nationalevacaturebank.nl/vacatures/",
+    base: "https://www.nationalevacaturebank.nl/vacature/zoeken",
     description: "Breed vacatureplatform met veel functies binnen uiteenlopende vakgebieden.",
     buildUrl: ({ zoekterm, locatie }) => {
       const params = new URLSearchParams();
       if (zoekterm) params.set("query", zoekterm);
       if (locatie) params.set("location", locatie);
+      params.set("sort", "relevance");
       const query = params.toString();
-      return query
-        ? `https://www.nationalevacaturebank.nl/vacatures/zoek?${query}`
-        : "https://www.nationalevacaturebank.nl/vacatures/";
+      return `https://www.nationalevacaturebank.nl/vacature/zoeken?${query}`;
     }
   }
 ];
