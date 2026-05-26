@@ -27,12 +27,21 @@ const jobSources = [
     name: "Werk.nl",
     base: "https://www.werk.nl/nl/vacatures",
     description: "Vacatures via het landelijke werkplatform met brede regionale dekking.",
-    buildUrl: ({ zoekterm, locatie }) => {
+    buildUrl: () => {
+      return "https://www.werk.nl/nl/vacatures/";
+    }
+  },
+  {
+    name: "Jobbird",
+    base: "https://www.jobbird.com/nl/vacature",
+    description: "Vacatures met directe filters op functie en locatie, handig voor retail rollen.",
+    buildUrl: ({ zoektermPlatform, locatie }) => {
       const params = new URLSearchParams();
-      if (zoekterm) params.set("zoekterm", zoekterm);
-      if (locatie) params.set("plaats", locatie);
-      const query = params.toString();
-      return query ? `https://www.werk.nl/nl/vacatures?${query}` : "https://www.werk.nl/nl/vacatures";
+      if (zoektermPlatform) params.set("s", zoektermPlatform);
+      if (locatie) params.set("p", locatie);
+      params.set("rad", "30");
+      params.set("jobAlertEmail", "");
+      return `https://www.jobbird.com/nl/vacature?${params.toString()}`;
     }
   },
   {
@@ -90,6 +99,7 @@ function buildSearchModel() {
   const locatie = sanitizeInput(locatieInput.value);
   const dienstverband = sanitizeInput(dienstverbandInput.value);
   const profielKeywords = sanitizeInput(profielKeywordsInput.value);
+  const zoektermPlatform = [zoekterm, dienstverband].filter(Boolean).join(" ");
 
   const standaardRegio = DEFAULT_REGION_VALUE;
   const regioContext = locatie ? "" : standaardRegio;
@@ -102,6 +112,7 @@ function buildSearchModel() {
 
   return {
     zoekterm: samengesteldeZoekterm,
+    zoektermPlatform,
     locatie,
     dienstverband
   };
