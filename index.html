@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MauriceZoektWerk.online | Vind een baan voor Maurice</title>
+    <title>MauriceZoektWerk.online | Premium & Luxury Retail vacatures</title>
     <meta
       name="description"
-      content="MauriceZoektWerk.online helpt Maurice, een sociaal en communicatief sterke professional, snel passende vacatures te vinden."
+      content="MauriceZoektWerk.online helpt Maurice vacatures te vinden in premium en luxury retail, met focus op assistent manager, showroom assistant, fashion advisor en specialistrollen."
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://mauricezoektwerk.online/" />
@@ -14,19 +14,19 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="nl_NL" />
     <meta property="og:site_name" content="mauricezoektwerk.online" />
-    <meta property="og:title" content="MauriceZoektWerk.online | Vind een baan voor Maurice" />
+    <meta property="og:title" content="MauriceZoektWerk.online | Premium & Luxury Retail vacatures" />
     <meta
       property="og:description"
-      content="Ontdek snel vacatures voor Maurice via betrouwbare platforms, met focus op sociale en communicatieve functies."
+      content="Ontdek snel premium en luxury retail vacatures voor Maurice in regio Haarlem, Amsterdam, Leiden en Den Haag."
     />
     <meta property="og:url" content="https://mauricezoektwerk.online/" />
     <meta property="og:image" content="https://mauricezoektwerk.online/og-image.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MauriceZoektWerk.online | Vind een baan voor Maurice" />
+    <meta name="twitter:title" content="MauriceZoektWerk.online | Premium & Luxury Retail vacatures" />
     <meta
       name="twitter:description"
-      content="Een overzichtelijke vacaturezoeksite die Maurice helpt bij het vinden van een baan met veel menselijk contact."
+      content="Een overzichtelijke vacaturezoeksite die Maurice helpt bij het vinden van een rol binnen premium en luxury retail."
     />
     <meta name="twitter:image" content="https://mauricezoektwerk.online/og-image.jpg" />
     <meta name="theme-color" content="#1e293b" />
@@ -42,7 +42,10 @@
   <body>
     <header class="hero" id="home">
       <nav class="container nav" aria-label="Hoofdnavigatie">
-        <a href="#home" class="logo" aria-label="Ga naar homepage">mauricezoektwerk.online</a>
+        <a href="#home" class="logo" aria-label="Ga naar homepage">
+          <img src="lion-logo.svg" class="logo-icon" alt="Subtiel leeuwlogo" />
+          <span>mauricezoektwerk.online</span>
+        </a>
         <ul class="nav-links">
           <li><a href="#zoeken">Zoeken</a></li>
           <li><a href="#over">Over Maurice</a></li>
@@ -51,14 +54,25 @@
       </nav>
 
       <div class="container hero-content">
-        <p class="hero-label">Persoonlijk vacatureplatform</p>
-        <h1>Maurice is klaar voor een nieuwe stap in zijn loopbaan.</h1>
+        <p class="hero-label">Open to work in premium & luxury retail</p>
+        <h1>Ik ben klaar voor een nieuwe stap binnen premium & luxury retail.</h1>
         <p class="hero-intro">
-          Maurice is sociaal, werkt graag met mensen en voelt zich op zijn best in een functie waarin
-          samenwerken en heldere communicatie centraal staan. Deze website helpt hem snel passende
-          vacatures te vinden via meerdere betrouwbare vacatureplatformen.
+          Na verschillende ervaringen binnen high-end retail zoekt Maurice een nieuwe uitdaging als
+          Assistent Manager, Showroom Assistant, Fashion Advisor of (Brand/Product) Specialist in de
+          regio Haarlem, Amsterdam, Leiden of Den Haag.
         </p>
-        <a class="btn btn-primary" href="#zoeken">Vind een baan</a>
+        <div class="hero-tags" aria-label="Focusgebieden">
+          <span class="hero-tag">Coachend leiderschap</span>
+          <span class="hero-tag">Premium service</span>
+          <span class="hero-tag">Commercieel sterk</span>
+          <span class="hero-tag">Luxury retail</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#zoeken">Vind een passende vacature</a>
+          <a class="btn btn-secondary" href="#over">Lees het profiel</a>
+          <button type="button" class="btn btn-secondary" id="shareProfileBtn">Deel dit profiel</button>
+        </div>
+        <p id="shareFeedback" class="share-feedback" aria-live="polite"></p>
       </div>
     </header>
 
@@ -69,15 +83,15 @@
           <div class="steps" role="list">
             <article class="step" role="listitem">
               <h3>1. Zoekopdracht invullen</h3>
-              <p>Typ een functie, skill of interessegebied van Maurice in de zoekbalk.</p>
+              <p>Gebruik functietitels zoals Assistent Manager, Showroom Assistant of Fashion Advisor.</p>
             </article>
             <article class="step" role="listitem">
               <h3>2. Filters kiezen</h3>
-              <p>Verfijn op locatie en soort dienstverband voor gerichtere resultaten.</p>
+              <p>Selecteer regio en dienstverband om resultaten sneller te richten op de juiste vacatures.</p>
             </article>
             <article class="step" role="listitem">
               <h3>3. Vacatures openen</h3>
-              <p>Klik op een platform en bekijk direct vacatures op de externe vacaturewebsite.</p>
+              <p>Open vacatures direct op externe platforms met een context die aansluit op luxury retail.</p>
             </article>
           </div>
         </div>
@@ -86,6 +100,19 @@
       <section class="section section-search" id="zoeken" aria-labelledby="zoeken-titel">
         <div class="container">
           <h2 id="zoeken-titel">Vacature zoekfunctie</h2>
+          <p class="search-intro">
+            De zoekfunctie voegt automatisch context toe rond premium service, retail leadership en
+            luxury winkelervaring, zodat de resultaten beter aansluiten op het profiel van Maurice.
+          </p>
+
+          <div class="quick-filters" aria-label="Snelle rolfilters">
+            <button type="button" class="quick-chip" data-role="Assistent Manager">Assistent Manager</button>
+            <button type="button" class="quick-chip" data-role="Showroom Assistant">Showroom Assistant</button>
+            <button type="button" class="quick-chip" data-role="Fashion Advisor">Fashion Advisor</button>
+            <button type="button" class="quick-chip" data-role="Brand Specialist">Brand Specialist</button>
+            <button type="button" class="quick-chip" data-role="Product Specialist">Product Specialist</button>
+          </div>
+
           <form id="searchForm" class="search-form" novalidate>
             <div class="field-group">
               <label for="zoekterm">Zoekterm</label>
@@ -93,21 +120,30 @@
                 id="zoekterm"
                 name="zoekterm"
                 type="text"
-                placeholder="Bijv. data-analist, projectmanager, BI developer"
+                placeholder="Bijv. assistent manager, showroom assistant, fashion advisor"
                 autocomplete="off"
               />
             </div>
+
+            <input
+              id="profielKeywords"
+              name="profielKeywords"
+              type="hidden"
+              value="premium luxury retail coachend leiderschap servicegericht klantbeleving commercieel operationeel teammanagement voorraadbeheer de bijenkorf"
+            />
 
             <div class="field-row">
               <div class="field-group">
                 <label for="locatie">Locatie</label>
                 <select id="locatie" name="locatie">
+                  <option value="Haarlem Amsterdam Leiden Den Haag" selected>
+                    Regiofocus: Haarlem, Amsterdam, Leiden, Den Haag
+                  </option>
                   <option value="">Alle locaties</option>
+                  <option value="Haarlem">Haarlem</option>
                   <option value="Amsterdam">Amsterdam</option>
-                  <option value="Rotterdam">Rotterdam</option>
-                  <option value="Utrecht">Utrecht</option>
+                  <option value="Leiden">Leiden</option>
                   <option value="Den Haag">Den Haag</option>
-                  <option value="Eindhoven">Eindhoven</option>
                   <option value="Hybride">Hybride</option>
                   <option value="Remote">Remote</option>
                 </select>
@@ -152,31 +188,37 @@
         <div class="container">
           <h2 id="over-titel">Over Maurice</h2>
           <article class="profile-card">
-            <h3>Profiel</h3>
+            <h3>Profiel & ambitie</h3>
             <p>
-              Maurice is een toegankelijke en positieve professional die energie krijgt van contact met
-              mensen. Hij communiceert helder, luistert actief en weet collega's en klanten op een
-              prettige manier mee te nemen. Hij zoekt een rol waarin samenwerking, klantgerichtheid en
-              goede communicatie een belangrijke plek hebben.
+              Na verschillende ervaringen binnen high-end retail is Maurice op zoek naar een nieuwe
+              uitdaging als Assistent Manager, Showroom Assistant, Fashion Advisor of
+              (Brand/Product) Specialist in de regio Haarlem, Amsterdam, Leiden of Den Haag.
             </p>
 
-            <h3>Vaardigheden</h3>
+            <p>
+              Zijn kracht ligt in het verbinden van mensen, service en commercie. Maurice gelooft dat
+              een sterke klantbeleving begint bij een gemotiveerd team en een duidelijke focus op
+              kwaliteit en resultaat.
+            </p>
+
+            <h3>Kernkwaliteiten</h3>
             <ul>
-              <li>Sterke mondelinge en schriftelijke communicatie</li>
-              <li>Samenwerken met diverse teams en stakeholders</li>
-              <li>Klantgericht werken en relatiebeheer</li>
-              <li>Structuur aanbrengen en afspraken opvolgen</li>
+              <li>Coachend leiderschap: teams begeleiden, motiveren en samen prestaties verbeteren.</li>
+              <li>Sterk service- en klantgericht: verwachtingen overtreffen en premium ervaring bieden.</li>
+              <li>Commercieel en operationeel sterk: teammanagement, winkelprocessen en voorraadbeheer.</li>
             </ul>
 
             <h3>Werkervaring</h3>
             <p>
-              Maurice heeft ruime ervaring in de detailhandel, waar hij dagelijks klanten te woord stond,
-              hun wensen vertaalde naar passende oplossingen en actief adviseerde bij keuzes. Daarnaast
-              heeft hij ervaring in rollen waarin afstemming, samenwerking en contact met interne en
-              externe partijen centraal stonden. Hij schakelt makkelijk tussen verschillende
-              gesprekspartners, bewaart overzicht en zorgt dat acties duidelijk worden opgepakt. Daarmee
-              levert hij een betrouwbare bijdrage aan teams en projecten.
+              In zijn rol binnen onder andere De Bijenkorf heeft Maurice als ambassadeur van Premium
+              Services collega's gecoacht, dagstarts verzorgd en actief bijgedragen aan het verbeteren
+              van service en klantbeleving op de winkelvloer.
             </p>
+
+            <blockquote class="profile-cta">
+              Ben jij, of ken jij iemand die past binnen deze zoektocht? Maurice staat open voor tips,
+              vacatures of een share van dit bericht.
+            </blockquote>
           </article>
         </div>
       </section>
@@ -185,7 +227,8 @@
         <div class="container">
           <h2 id="contact-titel">Contact</h2>
           <p>
-            Ken je een passende vacature of wil je Maurice uitnodigen voor een gesprek?
+            Ken je een passende vacature of wil je Maurice uitnodigen voor een gesprek? Maurice komt
+            graag in contact en staat open voor tips, vacatures of een introductie.
             Neem contact op via
             <a href="mailto:info@mauricezoektwerk.online">info@mauricezoektwerk.online</a>.
           </p>
@@ -198,6 +241,22 @@
         <p>&copy; <span id="year"></span> mauricezoektwerk.online</p>
       </div>
     </footer>
+
+    <dialog id="shareModal" class="share-modal" aria-labelledby="shareModalTitle">
+      <form method="dialog" class="share-modal-content">
+        <h3 id="shareModalTitle">Deel dit profiel op LinkedIn</h3>
+        <p>
+          Hieronder staat de kant-en-klare tekst. Je kunt hem kopieren en daarna direct LinkedIn openen.
+        </p>
+        <textarea id="shareTextPreview" class="share-text-preview" rows="8" readonly></textarea>
+        <div class="share-modal-actions">
+          <button type="button" class="btn btn-secondary" id="copyShareTextBtn">Kopieer tekst</button>
+          <button type="button" class="btn btn-primary" id="openLinkedInBtn">Open LinkedIn</button>
+          <button type="submit" class="btn btn-secondary">Sluiten</button>
+        </div>
+        <p id="shareModalFeedback" class="share-feedback" aria-live="polite"></p>
+      </form>
+    </dialog>
 
     <script src="js/script.js"></script>
   </body>

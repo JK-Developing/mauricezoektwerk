@@ -54,10 +54,30 @@ const form = document.getElementById("searchForm");
 const zoektermInput = document.getElementById("zoekterm");
 const locatieInput = document.getElementById("locatie");
 const dienstverbandInput = document.getElementById("dienstverband");
+const profielKeywordsInput = document.getElementById("profielKeywords");
+const shareProfileBtn = document.getElementById("shareProfileBtn");
+const shareFeedback = document.getElementById("shareFeedback");
+const shareModal = document.getElementById("shareModal");
+const shareTextPreview = document.getElementById("shareTextPreview");
+const copyShareTextBtn = document.getElementById("copyShareTextBtn");
+const openLinkedInBtn = document.getElementById("openLinkedInBtn");
+const shareModalFeedback = document.getElementById("shareModalFeedback");
 const loadingIndicator = document.getElementById("loadingIndicator");
 const emptyState = document.getElementById("emptyState");
 const resultsGrid = document.getElementById("resultsGrid");
 const yearElement = document.getElementById("year");
+const quickChips = document.querySelectorAll(".quick-chip");
+
+const DEFAULT_REGION_VALUE = "Haarlem Amsterdam Leiden Den Haag";
+const REGION_PREF_KEY = "mzwo_default_region_set";
+
+const linkedInShareText =
+  "✨ Ik ben klaar voor een nieuwe stap binnen premium & luxury retail. " +
+  "Na verschillende ervaringen binnen high-end retail ben ik op zoek naar een nieuwe uitdaging als " +
+  "Assistent Manager, Showroom Assistant, Fashion Advisor of (Brand/Product) Specialist in de regio " +
+  "Haarlem, Amsterdam, Leiden of Den Haag. Mijn kracht ligt in het verbinden van mensen, service en commercie. " +
+  "In mijn rol bij o.a. De Bijenkorf heb ik collega's gecoacht en servicebeleving versterkt. " +
+  "Ken jij een passende rol of vacature? Ik kom graag in contact. 🙏";
 
 yearElement.textContent = new Date().getFullYear();
 
@@ -69,16 +89,73 @@ function buildSearchModel() {
   const zoekterm = sanitizeInput(zoektermInput.value);
   const locatie = sanitizeInput(locatieInput.value);
   const dienstverband = sanitizeInput(dienstverbandInput.value);
+  const profielKeywords = sanitizeInput(profielKeywordsInput.value);
+
+  const standaardRegio = DEFAULT_REGION_VALUE;
+  const regioContext = locatie ? "" : standaardRegio;
 
   // Het dienstverband voegen we toe aan de zoekterm, zodat platforms zonder specifieke filter-parameter
   // toch een relevante zoekopdracht krijgen.
-  const samengesteldeZoekterm = [zoekterm, dienstverband].filter(Boolean).join(" ");
+  const samengesteldeZoekterm = [zoekterm, dienstverband, regioContext, profielKeywords]
+    .filter(Boolean)
+    .join(" ");
 
   return {
     zoekterm: samengesteldeZoekterm,
     locatie,
     dienstverband
   };
+}
+
+function ensureDefaultRegionPreference() {
+  const hasSetPreference = window.localStorage.getItem(REGION_PREF_KEY);
+
+  if (!hasSetPreference) {
+    locatieInput.value = DEFAULT_REGION_VALUE;
+    window.localStorage.setItem(REGION_PREF_KEY, "true");
+  }
+}
+
+function setShareFeedback(message) {
+  shareFeedback.textContent = message;
+}
+
+function setShareModalFeedback(message) {
+  shareModalFeedback.textContent = message;
+}
+
+function openLinkedIn() {
+  window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
+}
+
+async function copyShareText() {
+  try {
+    await navigator.clipboard.writeText(linkedInShareText);
+    setShareModalFeedback("LinkedIn-tekst gekopieerd.");
+    setShareFeedback("LinkedIn-tekst staat klaar om te delen.");
+  } catch {
+    setShareModalFeedback("Kopieren lukte niet automatisch. Selecteer en kopieer de tekst handmatig.");
+    setShareFeedback("Gebruik de tekst in de preview om handmatig te delen.");
+  }
+}
+
+function openSharePreviewModal() {
+  shareTextPreview.value = linkedInShareText;
+  setShareModalFeedback("");
+
+  // Fallback voor browsers zonder dialog ondersteuning.
+  if (typeof shareModal.showModal !== "function") {
+    copyShareText();
+    openLinkedIn();
+    return;
+  }
+
+  shareModal.showModal();
+  shareTextPreview.focus();
+}
+
+async function handleProfileShare() {
+  openSharePreviewModal();
 }
 
 function shouldShowEmptyState({ zoekterm, locatie, dienstverband }) {
@@ -115,6 +192,14 @@ function renderResults(searchModel) {
   cards.forEach((card) => resultsGrid.appendChild(card));
 }
 
+function setZoektermFromQuickChip(role) {
+  zoektermInput.value = role;
+  quickChips.forEach((chip) => {
+    chip.classList.toggle("is-selected", chip.dataset.role === role);
+  });
+  zoektermInput.focus();
+}
+
 function setSearchingState(isLoading) {
   loadingIndicator.hidden = !isLoading;
   form.querySelector("button[type='submit']").disabled = isLoading;
@@ -143,3 +228,17 @@ function handleSearch(event) {
 }
 
 form.addEventListener("submit", handleSearch);
+
+quickChips.forEach((chip) => {
+  chip.addEventListener("click", () => {
+    setZoektermFromQuickChip(chip.dataset.role || "");
+  });
+});
+
+shareProfileBtn.addEventListener("click", handleProfileShare);
+copyShareTextBtn.addEventListener("click", copyShareText);
+openLinkedInBtn.addEventListener("click", () => {
+  openLinkedIn();
+  setShareModalFeedback("LinkedIn is geopend in een nieuw tabblad.");
+});
+ensureDefaultRegionPreference();
