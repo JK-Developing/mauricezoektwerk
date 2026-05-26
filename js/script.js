@@ -98,7 +98,6 @@ function buildSearchModel() {
   const zoekterm = sanitizeInput(zoektermInput.value);
   const locatie = sanitizeInput(locatieInput.value);
   const dienstverband = sanitizeInput(dienstverbandInput.value);
-  const profielKeywords = sanitizeInput(profielKeywordsInput.value);
   const zoektermInvoer = zoekterm;
 
   const standaardRegio = DEFAULT_REGION_VALUE;
@@ -106,7 +105,7 @@ function buildSearchModel() {
 
   // Het dienstverband voegen we toe aan de zoekterm, zodat platforms zonder specifieke filter-parameter
   // toch een relevante zoekopdracht krijgen.
-  const samengesteldeZoekterm = [zoekterm, dienstverband, regioContext, profielKeywords]
+  const samengesteldeZoekterm = [zoekterm, dienstverband, regioContext]
     .filter(Boolean)
     .join(" ");
 
