@@ -4,9 +4,9 @@ const jobSources = [
     name: "Indeed",
     base: "https://nl.indeed.com/jobs",
     description: "Groot aanbod vacatures in Nederland, van startersfuncties tot senior rollen.",
-    buildUrl: ({ zoekterm, locatie }) => {
+    buildUrl: ({ zoektermInvoer, locatie }) => {
       const params = new URLSearchParams();
-      if (zoekterm) params.set("q", zoekterm);
+      if (zoektermInvoer) params.set("q", zoektermInvoer);
       if (locatie) params.set("l", locatie);
       return `https://nl.indeed.com/jobs?${params.toString()}`;
     }
@@ -15,9 +15,9 @@ const jobSources = [
     name: "Randstad",
     base: "https://www.randstad.nl/vacatures",
     description: "Vacatures via een bekende recruiter met focus op diverse sectoren.",
-    buildUrl: ({ zoekterm, locatie }) => {
+    buildUrl: ({ zoektermInvoer, locatie }) => {
       const params = new URLSearchParams();
-      if (zoekterm) params.set("zoekterm", zoekterm);
+      if (zoektermInvoer) params.set("zoekterm", zoektermInvoer);
       if (locatie) params.set("locatie", locatie);
       const query = params.toString();
       return query ? `https://www.randstad.nl/vacatures?${query}` : "https://www.randstad.nl/vacatures";
@@ -35,9 +35,9 @@ const jobSources = [
     name: "Jobbird",
     base: "https://www.jobbird.com/nl/vacature",
     description: "Vacatures met directe filters op functie en locatie, handig voor retail rollen.",
-    buildUrl: ({ zoektermPlatform, locatie }) => {
+    buildUrl: ({ zoektermInvoer, locatie }) => {
       const params = new URLSearchParams();
-      if (zoektermPlatform) params.set("s", zoektermPlatform);
+      if (zoektermInvoer) params.set("s", zoektermInvoer);
       if (locatie) params.set("p", locatie);
       params.set("rad", "30");
       params.set("jobAlertEmail", "");
@@ -48,9 +48,9 @@ const jobSources = [
     name: "Nationale Vacaturebank",
     base: "https://www.nationalevacaturebank.nl/vacature/zoeken",
     description: "Breed vacatureplatform met veel functies binnen uiteenlopende vakgebieden.",
-    buildUrl: ({ zoekterm, locatie }) => {
+    buildUrl: ({ zoektermInvoer, locatie }) => {
       const params = new URLSearchParams();
-      if (zoekterm) params.set("query", zoekterm);
+      if (zoektermInvoer) params.set("query", zoektermInvoer);
       if (locatie) params.set("location", locatie);
       params.set("sort", "relevance");
       const query = params.toString();
@@ -99,7 +99,7 @@ function buildSearchModel() {
   const locatie = sanitizeInput(locatieInput.value);
   const dienstverband = sanitizeInput(dienstverbandInput.value);
   const profielKeywords = sanitizeInput(profielKeywordsInput.value);
-  const zoektermPlatform = [zoekterm, dienstverband].filter(Boolean).join(" ");
+  const zoektermInvoer = zoekterm;
 
   const standaardRegio = DEFAULT_REGION_VALUE;
   const regioContext = locatie ? "" : standaardRegio;
@@ -112,7 +112,7 @@ function buildSearchModel() {
 
   return {
     zoekterm: samengesteldeZoekterm,
-    zoektermPlatform,
+    zoektermInvoer,
     locatie,
     dienstverband
   };
